@@ -1,0 +1,12 @@
+Source: asterisk-appplaybg
+Section: misc
+Priority: optional
+Maintainer: Michael Ricordeau <m.ricordeau@newtech.fr>
+Build-Depends: debhelper (>> 5.0.0), asterisk-dev (>= 1.4.23)
+Standards-Version: 3.7.2
+
+Package: asterisk-appplaybg
+Architecture: all
+Provides: asterisk-appplaybg
+Depends: asterisk (>= 1.4.23), ${shlibs:Depends}
+Description: Asterisk PlayBG app.

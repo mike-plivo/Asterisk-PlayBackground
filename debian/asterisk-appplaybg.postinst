@@ -1,0 +1,5 @@
+#!/bin/bash
+
+$(which rasterisk) -x "module load app_playbg.so" && echo "Module playbg loaded"
+
+exit 0;

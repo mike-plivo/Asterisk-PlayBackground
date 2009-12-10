@@ -1,0 +1,11 @@
+Play Background is inspired by MusicOnHold
+but is more simpliest .
+You can only set a list of files to play.
+
+Play Background is providing applications :
+- StartPlayBG
+- StopPlayBG
+- ResumePLayBG
+
+
+Tested on Asterisk 1.4.26.2 

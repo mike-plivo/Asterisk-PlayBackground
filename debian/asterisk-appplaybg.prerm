@@ -1,0 +1,5 @@
+#!/bin/bash
+
+$(which rasterisk) -x "module unload app_playbg.so" && echo "Module playbg unloaded"
+
+exit 0;
