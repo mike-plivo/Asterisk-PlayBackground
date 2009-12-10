@@ -30,8 +30,6 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 1.1 $")
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
-#include <signal.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 #include "asterisk/lock.h"
@@ -87,6 +85,7 @@ struct playbg_state {
 	int sample_queue;
 };
 
+
 static void playbg_state_destroy(void *data) {
 
 	struct playbg_state *state = data;
@@ -99,12 +98,11 @@ static void playbg_state_destroy(void *data) {
 	ast_log(LOG_DEBUG, "playbg state destroyed\n");
 }
 
+
 static const struct ast_datastore_info playbg_state_datastore_info = {
         .type = "PLAYBGSTATE",
         .destroy = playbg_state_destroy,
 };
-
-
 
 
 static void playbg_release(struct ast_channel *chan, void *data)
@@ -142,7 +140,6 @@ static void playbg_release(struct ast_channel *chan, void *data)
 		ast_log(LOG_WARNING, "Unable to restore channel '%s' to format '%d'\n", chan->name, state->origwfmt);
 	}
 }
-
 
 
 static int playbg_seek(struct ast_channel *chan)
@@ -198,6 +195,7 @@ static int playbg_seek(struct ast_channel *chan)
 	return 0;
 }
 
+
 static struct ast_frame *playbg_readframe(struct ast_channel *chan) 
 {
 	struct playbg_state *state = NULL;
@@ -231,6 +229,7 @@ static struct ast_frame *playbg_readframe(struct ast_channel *chan)
 
 	return f;
 }
+
 
 static int playbg_generator(struct ast_channel *chan, void *data, int len, int samples)
 {
@@ -403,6 +402,7 @@ static int playbg_start(struct ast_channel *chan, const char *opts)
 	return res;
 }
 
+
 static void playbg_stop(struct ast_channel *chan)
 {
 	struct ast_datastore *datastore;
@@ -432,11 +432,13 @@ static void playbg_stop(struct ast_channel *chan)
 	}
 }
 
+
 static int playbg_exec_stop(struct ast_channel *chan, void *data)
 {
 	playbg_stop(chan);
 	return 0;
 }
+
 
 static int playbg_exec_start(struct ast_channel *chan, void *data)
 {
@@ -454,6 +456,7 @@ static int playbg_exec_start(struct ast_channel *chan, void *data)
 
 	return res;
 }
+
 
 static int playbg_exec_resume(struct ast_channel *chan, void *data)
 {
@@ -480,7 +483,6 @@ static int playbg_exec_resume(struct ast_channel *chan, void *data)
 }
 
 
-
 static int load_module(void)
 {
 	int res = 0;
@@ -490,6 +492,7 @@ static int load_module(void)
 	return res;
 }
 
+
 static int unload_module(void)
 {
 	int res = 0;
@@ -498,6 +501,7 @@ static int unload_module(void)
 	res |= ast_unregister_application(app3);
 	return res;
 }
+
 
 AST_MODULE_INFO(ASTERISK_GPL_KEY, AST_MODFLAG_DEFAULT, "Play BG",
 	.load = load_module,
